@@ -2,6 +2,7 @@
 
 import { GeoPoint } from "@/types";
 import { formatNumber, formatCoordinate, getCategoryInfo, getRgbString } from "../../utils/utils";
+import Button from "../Button";
 
 interface PointDetailPanelProps {
   point: GeoPoint;
@@ -28,12 +29,14 @@ export default function PointDetailPanel({ point, onClose, onZoomTo }: PointDeta
           <span className="text-xl">{catInfo.icon}</span>
           <span className="font-medium">{catInfo.label}</span>
         </div>
-        <button
+        <Button
+          variant="icon"
+          size="sm"
           onClick={onClose}
-          className="text-white/80 hover:text-white text-xl font-bold leading-none"
+          className="text-xl font-bold leading-none"
         >
           &times;
-        </button>
+        </Button>
       </div>
 
       {/* Content */}
@@ -53,12 +56,14 @@ export default function PointDetailPanel({ point, onClose, onZoomTo }: PointDeta
         <div className="mt-4">
           <div className="flex items-center justify-between mb-1">
             <span className="text-sm text-gray-600">Location</span>
-            <button
+            <Button
+              variant="icon"
+              size="sm"
               onClick={() => copyToClipboard(coordString)}
-              className="text-xs text-blue-500 hover:text-blue-700 flex items-center gap-1"
+              className="text-blue-500 hover:text-blue-700 flex items-center gap-1"
             >
               📋 Copy
-            </button>
+            </Button>
           </div>
           <div className="text-sm space-y-1">
             <div className="flex justify-between">
@@ -74,12 +79,13 @@ export default function PointDetailPanel({ point, onClose, onZoomTo }: PointDeta
 
         {/* Action buttons */}
         <div className="mt-4 flex gap-2">
-          <button
+          <Button
+            variant="primary"
+            fullWidth
             onClick={() => onZoomTo(point)}
-            className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors text-sm font-medium"
           >
             Zoom In
-          </button>
+          </Button>
           <a
             href={`https://www.google.com/maps?q=${point.lat},${point.lon}`}
             target="_blank"

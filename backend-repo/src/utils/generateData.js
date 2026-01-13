@@ -1,5 +1,16 @@
 // Generate 1,500 dummy geospatial points
-const CATEGORIES = ['restaurant', 'hotel', 'hospital', 'school', 'office', 'park', 'store', 'museum'];
+
+// All the constants are currently used in this file only later we can move these in the Constant file
+const CATEGORIES = [
+  "restaurant",
+  "hotel",
+  "hospital",
+  "school",
+  "office",
+  "park",
+  "store",
+  "museum",
+];
 
 const INDIA_BOUNDS = {
   minLat: 6.5,
@@ -20,31 +31,40 @@ const INDIA_SPREAD = {
   lon: 15,
 };
 
+const PREFIXES = {
+  restaurant: ["Golden", "Silver", "Royal", "Ocean", "Mountain", "City"],
+  hotel: ["Grand", "Luxury", "Comfort", "Paradise", "Sunset", "Harbor"],
+  hospital: ["Central", "Regional", "Community", "Metro", "Unity", "Care"],
+  school: [
+    "Lincoln",
+    "Washington",
+    "Jefferson",
+    "Franklin",
+    "Edison",
+    "Newton",
+  ],
+  office: ["Tech", "Global", "Prime", "Elite", "Summit", "Apex"],
+  park: ["Green", "Riverside", "Sunset", "Heritage", "Liberty", "Unity"],
+  store: ["Super", "Mega", "Express", "Value", "Premium", "Best"],
+  museum: ["National", "Modern", "Historic", "Art", "Science", "Natural"],
+};
+
+const SUFFIXES = {
+  restaurant: ["Kitchen", "Bistro", "Grill", "Cafe", "Diner", "Restaurant"],
+  hotel: ["Hotel", "Inn", "Suites", "Resort", "Lodge", "Plaza"],
+  hospital: ["Hospital", "Medical Center", "Clinic", "Health Center"],
+  school: ["Academy", "School", "Institute", "College", "Learning Center"],
+  office: ["Tower", "Center", "Plaza", "Building", "Complex", "Hub"],
+  park: ["Park", "Gardens", "Reserve", "Commons", "Square", "Grove"],
+  store: ["Mart", "Market", "Shop", "Outlet", "Store", "Center"],
+  museum: ["Museum", "Gallery", "Center", "Exhibition", "Collection"],
+};
+
 function generateRandomName(category, index) {
-  const prefixes = {
-    restaurant: ['Golden', 'Silver', 'Royal', 'Ocean', 'Mountain', 'City'],
-    hotel: ['Grand', 'Luxury', 'Comfort', 'Paradise', 'Sunset', 'Harbor'],
-    hospital: ['Central', 'Regional', 'Community', 'Metro', 'Unity', 'Care'],
-    school: ['Lincoln', 'Washington', 'Jefferson', 'Franklin', 'Edison', 'Newton'],
-    office: ['Tech', 'Global', 'Prime', 'Elite', 'Summit', 'Apex'],
-    park: ['Green', 'Riverside', 'Sunset', 'Heritage', 'Liberty', 'Unity'],
-    store: ['Super', 'Mega', 'Express', 'Value', 'Premium', 'Best'],
-    museum: ['National', 'Modern', 'Historic', 'Art', 'Science', 'Natural']
-  };
-
-  const suffixes = {
-    restaurant: ['Kitchen', 'Bistro', 'Grill', 'Cafe', 'Diner', 'Restaurant'],
-    hotel: ['Hotel', 'Inn', 'Suites', 'Resort', 'Lodge', 'Plaza'],
-    hospital: ['Hospital', 'Medical Center', 'Clinic', 'Health Center'],
-    school: ['Academy', 'School', 'Institute', 'College', 'Learning Center'],
-    office: ['Tower', 'Center', 'Plaza', 'Building', 'Complex', 'Hub'],
-    park: ['Park', 'Gardens', 'Reserve', 'Commons', 'Square', 'Grove'],
-    store: ['Mart', 'Market', 'Shop', 'Outlet', 'Store', 'Center'],
-    museum: ['Museum', 'Gallery', 'Center', 'Exhibition', 'Collection']
-  };
-
-  const prefix = prefixes[category][Math.floor(Math.random() * prefixes[category].length)];
-  const suffix = suffixes[category][Math.floor(Math.random() * suffixes[category].length)];
+  const prefix =
+    PREFIXES[category][Math.floor(Math.random() * PREFIXES[category].length)];
+  const suffix =
+    SUFFIXES[category][Math.floor(Math.random() * SUFFIXES[category].length)];
 
   return `${prefix} ${suffix} ${index}`;
 }

@@ -1,7 +1,7 @@
 const { allPoints } = require('../data/points');
 
 // GET /api/health - Health check endpoint
-const getHealth = (req, res) => {
+const getHealth = (_req, res) => {
   try {
     res.json({ status: 'ok', pointsCount: allPoints.length });
   } catch (error) {

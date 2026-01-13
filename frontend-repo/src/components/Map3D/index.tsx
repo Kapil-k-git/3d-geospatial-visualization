@@ -10,6 +10,7 @@ import MapTooltip from "./MapTooltip";
 import PointDetailPanel from "./PointDetailPanel";
 import CategoryLegend from "./CategoryLegend";
 import MapStatusOverlay from "./MapStatusOverlay";
+import Button from "../Button";
 import { useMapbox } from "@/hooks/useMapbox";
 import { usePoints } from "@/hooks/usePoints";
 import { useDeckLayers } from "@/hooks/useDeckLayers";
@@ -88,12 +89,13 @@ export default function Map3D({ mapboxToken }: Map3DProps) {
       />
 
       {/* Reset button */}
-      <button
+      <Button
+        variant="ghost"
         onClick={handleReset}
-        className="absolute top-4 right-16 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow-md transition-colors z-10"
+        className="absolute top-4 right-16 font-semibold z-10"
       >
         Reset View
-      </button>
+      </Button>
 
       {/* Hover tooltip */}
       {hoveredPoint && tooltipPosition && (

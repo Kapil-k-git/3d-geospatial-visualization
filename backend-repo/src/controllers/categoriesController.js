@@ -1,7 +1,7 @@
 const { allPoints } = require('../data/points');
 
 // GET /api/categories - Get list of all categories
-const getCategories = (req, res) => {
+const getCategories = (_req, res) => {
   try {
     const categories = [...new Set(allPoints.map(p => p.category))];
     res.json({
